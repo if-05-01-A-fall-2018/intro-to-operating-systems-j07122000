@@ -1,0 +1,16 @@
+OS:
+
+Free RTOS: Real Time Operating System:
+The kernel: consists of only three C files -> to make the code readable, easy to port, and maintainable, it is also written C, but there are a few assembly functions included where needed.
+
+Free RTOS provides methods for multiple threads or tasks, mutexes, semaphores and software timers. A tick-less mode -> provided for low power applications. Thread priorities are supported. FreeRTOS applications can be completely statically allocated. RTOS objects can be dynamically allocated with five schemes of memory allocation provided:
+
+    allocate only;
+    allocate and free with a very simple, fast, algorithm;
+    a more complex but fast allocate and free algorithm with memory coalescence;
+    an alternative to the more complex scheme that includes memory coalescence that allows a heap to be broken across multiple memory areas.
+    and C library allocate and free with some mutual exclusion protection.
+
+There are none of the more advanced features typically found in operating systems like Linux or Microsoft Windows, such as device drivers, advanced memory management, user accounts, and networking. The emphasis is on compactness and speed of execution. FreeRTOS can be thought of as a 'thread library' rather than an 'operating system', although command line interface and POSIX-like I/O abstraction add-ons are available.
+
+FreeRTOS implements multiple threads by having the host program call a thread tick method at regular short intervals. The thread tick method switches tasks depending on priority and a round-robin scheduling scheme. The usual interval is 1/1000 of a second to 1/100 of a second, via an interrupt from a hardware timer, but this interval is often changed to suit a particular application.
